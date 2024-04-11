@@ -3,7 +3,8 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './App.css';
 import Root from './root/Root';
 import Main from './root/Main';
-
+import Order from './components/Order';
+// import data from "./Utilities/data";
 
 
 
@@ -12,8 +13,18 @@ import Main from './root/Main';
 const router  = createBrowserRouter ( [
   { path :  "/", element : <Root></Root>, 
     children :  [
-      {path : "/", element : <Main></Main>},
-      {path :  "home", element : <Main></Main>}
+      {path : "/",
+        loader : async () => {
+            return fetch ("https://raw.githubusercontent.com/ProgrammingHero1/ema-john-resources/main/fakeData/products.json")
+        },
+          element : <Main></Main>},
+      {path : "home",
+        loader : async () => {
+            return fetch ("https://raw.githubusercontent.com/ProgrammingHero1/ema-john-resources/main/fakeData/products.json")
+        },
+          element : <Main></Main>},
+
+      {path : "cart", element :  <Order></Order>}
     ]
   }
       

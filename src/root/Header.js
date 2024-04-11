@@ -14,7 +14,7 @@ const Header = () => {
             
             <div className=' flex justify-center items-center gap-4'>
                 <Link to={"/home"}>Home</Link>
-                <Link>Home</Link>
+                <Link to={"/cart"}>Cart</Link>
                 <Link>Home</Link>
                 <Link>Home</Link>
             </div>
