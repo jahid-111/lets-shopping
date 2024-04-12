@@ -10,13 +10,17 @@ import React from 'react';
 
 const Cart = ({cart}) => {
     
-    console.log(cart)  
+  
     let total = 0;
     let shipping = 0;
+    let quantity =  0 ;
     for (const product of cart) {
         total =  total + product.price;
+        quantity = quantity + product.quantity;
+
         console.log(product.quantity)
 }
+console.log(quantity)
 
     if(total >= 1000){
         shipping = 3;
@@ -41,6 +45,7 @@ const Cart = ({cart}) => {
                 <h4> Added Item 
                     <span> {cart.length}</span>
                 </h4>
+                <h3>Quantity {quantity}</h3>
                 <h3>Cart Total : $  {total}</h3>
                 <h3>Shipping : ${shipping}</h3>
                 <h3>TAX : $ {tax}</h3>

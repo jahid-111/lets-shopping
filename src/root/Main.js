@@ -1,24 +1,36 @@
 
 
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Products from '../components/Products';
 import Cart from '../components/Cart';
 import  { useLoaderData } from "react-router-dom"
-import { addToDb } from '../Utilities/dataBase';
+import { addToDb, getExistInDB } from '../Utilities/dataBase';
 const Main = () => {    
-    const data = JSON.parse(useLoaderData());
-    const [carts, setCarts] = useState([]);
+const data = JSON.parse(useLoaderData());
+const [carts, setCarts] = useState([]);         
+
+    useEffect(() => {
+        const existCart = getExistInDB();
+        const savedCart = [];   
+        for (const id in existCart){
+            const products = data.find(product => product.id === id);
+            if (products){  
+                const quantity = existCart[id];
+                products.quantity = quantity;
+                savedCart.push(products);
+            }
+        }
+        if (JSON.stringify(savedCart) !== JSON.stringify(carts)) {
+            setCarts(savedCart);
+        }
+    }, [data, carts]);
 
 
-    
-    // console.log(carts)
     const addProduct = (products) => {
-
-        const newCart = [...carts, products]
-        setCarts(newCart)
-        addToDb(products.id)
-
+        const newCart = [...carts, products];
+        setCarts(newCart);
+        addToDb(products.id);
     }
 
     return (
