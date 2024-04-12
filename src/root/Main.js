@@ -13,10 +13,11 @@ const Main = () => {
 
     
     // console.log(carts)
-    const addProduct = (id) => {
-        const newCart = [...carts, id]
+    const addProduct = (products) => {
+
+        const newCart = [...carts, products]
         setCarts(newCart)
-        // addToDb(newCart)
+        addToDb(products.id)
 
     }
 
