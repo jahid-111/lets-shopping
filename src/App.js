@@ -4,6 +4,7 @@ import './App.css';
 import Root from './root/Root';
 import Main from './root/Main';
 import Order from './components/Order';
+import Cart from './components/Cart';
 // import data from "./Utilities/data";
 
 
@@ -16,15 +17,19 @@ const router  = createBrowserRouter ( [
       {path : "/",
         loader : async () => {
             return fetch ("https://raw.githubusercontent.com/ProgrammingHero1/ema-john-resources/main/fakeData/products.json")
-        },
-          element : <Main></Main>},
+        }, element : <Main></Main>},
       {path : "home",
         loader : async () => {
             return fetch ("https://raw.githubusercontent.com/ProgrammingHero1/ema-john-resources/main/fakeData/products.json")
-        },
-          element : <Main></Main>},
+        }, element : <Main></Main>},
+          
+      {path : "cart", loader : async () => {
+        return fetch ("https://raw.githubusercontent.com/ProgrammingHero1/ema-john-resources/main/fakeData/products.json")
+        }, element : <Order></Order>}
 
-      {path : "cart", element :  <Order></Order>}
+
+
+
     ]
   }
       

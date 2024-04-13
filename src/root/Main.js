@@ -6,6 +6,7 @@ import Products from '../components/Products';
 import Cart from '../components/Cart';
 import  { useLoaderData } from "react-router-dom"
 import { addToDb, getExistInDB } from '../Utilities/dataBase';
+import Order from '../components/Order';
 const Main = () => {    
 const data = JSON.parse(useLoaderData());
 const [carts, setCarts] = useState([]);         
@@ -26,6 +27,12 @@ const [carts, setCarts] = useState([]);
         }
     }, [data, carts]);
 
+
+    // const hi = "hi";
+
+    // const cardProduct = () => {
+    //    return <Order hi={carts}></Order>
+    // }   
 
     const addProduct = (products) => {
         const newCart = [...carts, products];
