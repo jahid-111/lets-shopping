@@ -6,11 +6,13 @@
 
 
 
-import React from 'react';
+import React, { useContext } from 'react';
+import { DataContext } from '../App';
 
 const Cart = ({cart}) => {
     
-  
+    const contextLoad = useContext(DataContext)
+    
     let total = 0;
     let shipping = 0;
     let quantity =  0 ;
@@ -68,6 +70,7 @@ const Cart = ({cart}) => {
                 <h2 className=' text-2xl font-bold '>
                     <span className=' text-[#FF6347]'>Grand Total : </span>
                     <span className=' text-blue-900 '> $ {grandTotal}</span>
+                    <p>Context : {contextLoad} </p>
                 </h2>
             </div>
         </div>

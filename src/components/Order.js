@@ -3,9 +3,8 @@
 
 
 import React from 'react';
-import { json, useLoaderData } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
 import { getExistInDB } from '../Utilities/dataBase';
-import Cart from './Cart';
 
 
 const Order = () => {
@@ -26,14 +25,17 @@ const Order = () => {
 
         // console.log(previewCard)
     return (
-        <div className=' flex justify-between items-center '>
+        <div className=' grid gap-3 justify-between items-center '>
 
             {previewCard.map ( card =>
-                <div className=' flex '>
+                <div className=' flex bg-red-100  '>
 
-                        <img src={card.img} alt="" />
-                        <h3>{card.name}</h3>
-                        <h3>{card.price}</h3>
+                        <img className=' h-24 w-24' src={card.img} alt="" />
+
+                        <div className=' flex flex-col justify-center ps-3'>
+                            <h3>{card.name}</h3>    
+                            <h3 className=' text-red-400'>{card.price}</h3>
+                        </div>
 
 
 

@@ -4,12 +4,13 @@ import './App.css';
 import Root from './root/Root';
 import Main from './root/Main';
 import Order from './components/Order';
-import Cart from './components/Cart';
+import { createContext } from 'react';
 // import data from "./Utilities/data";
 
 
 
 
+export const DataContext = createContext('pass_context')
 
 const router  = createBrowserRouter ( [
   { path :  "/", element : <Root></Root>, 
@@ -40,8 +41,11 @@ const router  = createBrowserRouter ( [
 
 function App() {
   return (
-    <div className=" md:px-24 mx-auto   ">
-        <RouterProvider router={ router}></RouterProvider>
+    <div className=" md:px-24 mx-auto">
+
+      <DataContext.Provider value='Contex-loaded'>
+          <RouterProvider router={ router}></RouterProvider>
+      </DataContext.Provider>
     </div>
   );
 }

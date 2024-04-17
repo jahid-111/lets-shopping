@@ -1,12 +1,25 @@
 
 
 
-import React, { useEffect, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import Products from '../components/Products';
 import Cart from '../components/Cart';
 import  { useLoaderData } from "react-router-dom"
 import { addToDb, getExistInDB } from '../Utilities/dataBase';
 import Order from '../components/Order';
+
+
+
+
+
+
+
+
+
+
+
+
+
 const Main = () => {    
 const data = JSON.parse(useLoaderData());
 const [carts, setCarts] = useState([]);         
